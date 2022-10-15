@@ -20,10 +20,14 @@
     "no-console": "warn",
     "react/prop-types": "off",
     "react/self-closing-comp": "warn",
-    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/function-component-definition": "off",
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "settings": {
     "react": {

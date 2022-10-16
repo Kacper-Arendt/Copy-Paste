@@ -11,3 +11,9 @@ export const StyledAside = styled.div`
 	border-bottom-left-radius: ${({ theme }) => theme.radius[2]};
 	border-top-left-radius: ${({ theme }) => theme.radius[2]};
 `;
+
+export const StyledFiles = styled.div`
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+`;

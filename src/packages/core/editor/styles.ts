@@ -9,7 +9,7 @@ export const StyledEditor = styled.div`
 		'aside main'
 		'aside main';
 
-	min-height: 42.4rem;
+	height: 42.4rem;
 	border-radius: ${({ theme }) => theme.radius[2]};
 
 	color: white;

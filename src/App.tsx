@@ -15,7 +15,7 @@ export const App = () => (
 			<Button variant="text" color="info">
 				Pizza Button
 			</Button>
-			<Editor />
+			<Editor componentName="button" componentTitle="Button" />
 		</div>
 	</ThemeProvider>
 );

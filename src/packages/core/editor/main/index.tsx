@@ -1,14 +1,17 @@
+import { useContext } from 'react';
+
+// HOOKS
+import { ContextData } from 'src/packages/core/editor/useEditorContext';
+
 // STYLES
 import { StyledMain } from 'src/packages/core/editor/main/styles';
 
 export const Main = () => {
-	console.log();
+	const { activeFile } = useContext(ContextData);
+
 	return (
 		<StyledMain>
-			<p>Main dir name</p>
-			<p>types.ts</p>
-			<p>styles.ts</p>
-			<p>index.ts</p>
+			<pre>{activeFile && `${activeFile.content}`}</pre>
 		</StyledMain>
 	);
 };

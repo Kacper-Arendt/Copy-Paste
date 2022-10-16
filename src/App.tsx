@@ -6,24 +6,16 @@ import theme from 'src/utils/theme/themeDefault';
 
 // PACKAGES
 import { Button } from 'src/packages/core/button';
+import { Editor } from 'src/packages/core/editor';
 
 export const App = () => (
 	<ThemeProvider theme={theme}>
 		<GlobalStyles />
 		<div>
-			<Button variant="text" color="info" disabled>
+			<Button variant="text" color="info">
 				Pizza Button
 			</Button>
-			<Button variant="outlined" color="secondary">
-				Pizza Button
-			</Button>
-			<Button variant="contained" color="dark">
-				Pizza Button
-			</Button>
-			{/* <Button to="main">Pizza Link</Button> */}
-			<Button disabled size="sm" href="https://react-bootstrap.github.io/components/buttons/">
-				Pizza A href
-			</Button>
+			<Editor />
 		</div>
 	</ThemeProvider>
 );

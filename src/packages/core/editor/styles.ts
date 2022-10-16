@@ -12,5 +12,5 @@ export const StyledEditor = styled.div`
 	height: 42.4rem;
 	border-radius: ${({ theme }) => theme.radius[2]};
 
-	color: white;
+	color: ${({ theme }) => theme.transparentize({ amount: 0.2, color: theme.white })};
 `;

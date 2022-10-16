@@ -4,22 +4,27 @@ import { useContext } from 'react';
 import { ContextData } from 'src/packages/core/editor/useEditorContext';
 
 // STYLES
-import { StyledAside, StyledFiles } from 'src/packages/core/editor/aside/styles';
+import { StyledAside, StyledFiles, StyledHeader } from 'src/packages/core/editor/aside/styles';
+import { FileButton } from '../common/FileButton';
 
 export const Aside = () => {
-	const { componentDir, componentTitle, componentName, getCurrentFile } = useContext(ContextData);
+	const { componentDir, componentTitle, componentName, getCurrentFile, activeFile } = useContext(ContextData);
 
 	return (
 		<StyledAside>
-			<p>{componentTitle}</p>
+			<StyledHeader>{componentTitle}</StyledHeader>
 
 			<StyledFiles>
 				<p>{componentName}</p>
 
 				{componentDir?.map(({ name, url }) => (
-					<button key={name} type="button" onClick={() => getCurrentFile(url)}>
-						{name}
-					</button>
+					<FileButton
+						key={name}
+						variant="aside"
+						text={name}
+						onClick={() => getCurrentFile(url)}
+						active={activeFile?.name === name}
+					/>
 				))}
 			</StyledFiles>
 		</StyledAside>

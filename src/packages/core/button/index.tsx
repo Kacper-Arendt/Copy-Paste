@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 // STYLES
-import { StyledButton } from 'src/packages/core/button/Styles';
+import { StyledButton } from 'src/packages/core/button/styles';
 import { ButtonInterface } from 'src/packages/core/button/types';
 
 export const Button = ({
@@ -20,20 +20,20 @@ export const Button = ({
 
 	if (href)
 		return (
-			<StyledButton as="a" href={href} {...basicProps}>
+			<StyledButton as="a" {...basicProps} href={href}>
 				{children}
 			</StyledButton>
 		);
 
 	if (to)
 		return (
-			<StyledButton as={Link} to={to} {...basicProps}>
+			<StyledButton as={Link} {...basicProps} to={to}>
 				{children}
 			</StyledButton>
 		);
 
 	return (
-		<StyledButton type={type} onClick={onClick} color={color} variant={variant} size={size} width={width} disabled={disabled}>
+		<StyledButton {...basicProps} type={type} onClick={onClick} disabled={disabled}>
 			{children}
 		</StyledButton>
 	);

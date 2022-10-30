@@ -11,7 +11,13 @@ export const Main = () => {
 
 	return (
 		<StyledMain>
-			<pre>{activeFile && `${activeFile.content}`}</pre>
+			{activeFile ? (
+				<pre>
+					<code>{activeFile.content}</code>
+				</pre>
+			) : (
+				<p>Chose file to show</p>
+			)}
 		</StyledMain>
 	);
 };

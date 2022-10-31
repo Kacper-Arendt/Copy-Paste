@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 
 // HOOKS
-import { ContextData } from 'src/packages/core/editor/useEditorContext';
+import { ContextData } from 'src/components/core/editor/useEditorContext';
 
 // STYLES
-import { StyledAside, StyledFiles, StyledHeader } from 'src/packages/core/editor/aside/styles';
+import { StyledAside, StyledFiles, StyledHeader } from 'src/components/core/editor/aside/styles';
 import { FileButton } from '../common/FileButton';
 
 export const Aside = () => {

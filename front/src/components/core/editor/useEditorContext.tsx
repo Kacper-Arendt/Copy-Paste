@@ -1,10 +1,10 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
 // HOOKS
-import { useGetComponent } from 'src/packages/core/editor/useGetComponent';
+import { useGetComponent } from 'src/components/core/editor/useGetComponent';
 
 // MODELS
-import { EditorPropsInterface } from 'src/packages/core/editor/types';
+import { EditorPropsInterface } from 'src/components/core/editor/types';
 
 interface ComponentInterface {
 	name: string;

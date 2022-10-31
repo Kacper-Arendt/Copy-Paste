@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 
 // HOOKS
-import { ContextData } from 'src/packages/core/editor/useEditorContext';
+import { ContextData } from 'src/components/core/editor/useEditorContext';
 
 // STYLES
-import { StyledMain } from 'src/packages/core/editor/main/styles';
+import { StyledMain } from 'src/components/core/editor/main/styles';
 
 export const Main = () => {
 	const { activeFile } = useContext(ContextData);

@@ -5,7 +5,7 @@ import GlobalStyles from 'src/utils/theme/globalStyles';
 import theme from 'src/utils/theme/themeDefault';
 
 // PACKAGES
-import { Map } from './packages/core/map';
+import { Map } from 'src/components/core/map';
 
 export const App = () => (
 	<ThemeProvider theme={theme}>

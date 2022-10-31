@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 // MODELS
-import { buttonSize, ButtonStylesInterface } from 'src/packages/core/button/types';
+import { buttonSize, ButtonStylesInterface } from 'src/components/core/button/types';
 
 const TextButton = css<ButtonStylesInterface>`
 	${({ theme, color }) =>

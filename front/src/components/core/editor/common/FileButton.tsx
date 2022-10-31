@@ -1,8 +1,8 @@
 // STYLES
-import { StyledFileButton } from 'src/packages/core/editor/common/styles';
+import { StyledFileButton } from 'src/components/core/editor/common/styles';
 
 // ASSETS
-import File from 'src/packages/core/editor/assets/file.svg';
+import File from 'src/components/core/editor/assets/file.svg';
 
 export interface FileButtonInterface {
 	text: string;

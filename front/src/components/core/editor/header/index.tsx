@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 
 // HOOKS
-import { ContextData } from 'src/packages/core/editor/useEditorContext';
+import { ContextData } from 'src/components/core/editor/useEditorContext';
 
 // STYLES
-import { StyledHeader } from 'src/packages/core/editor/header/styles';
-import { FileButton } from 'src/packages/core/editor/common/FileButton';
+import { StyledHeader } from 'src/components/core/editor/header/styles';
+import { FileButton } from 'src/components/core/editor/common/FileButton';
 
 export const Header = () => {
 	const { componentDir, getCurrentFile, activeFile } = useContext(ContextData);

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
 // STYLES
-import { StyledButton } from 'src/packages/core/button/styles';
-import { ButtonInterface } from 'src/packages/core/button/types';
+import { StyledButton } from 'src/components/core/button/styles';
+import { ButtonInterface } from 'src/components/core/button/types';
 
 export const Button = ({
 	children,

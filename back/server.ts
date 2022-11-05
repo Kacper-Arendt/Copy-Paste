@@ -8,12 +8,23 @@ import {errorHandler, notFoundMiddleware} from './middlewares/index.ts'
 
 // CONFIG
 import { PORT } from "./config.ts";
+import client from "./db/client.ts";
 
 const port = PORT as unknown as number ?? 8000;
 const app = new Application();
 
-app.use(errorHandler);
+try {
+  await client.queryObject`
+    CREATE TABLE IF NOT EXISTS notes (
+      id UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+      title VARCHAR(20) NOT NULL
+    )
+  `;
+} finally {
+  client.release();
+}
 
+app.use(errorHandler);
 app.use(router.allowedMethods())
 app.use(router.routes())
 

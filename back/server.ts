@@ -1,28 +1,23 @@
 import { Application, } from 'https://deno.land/x/oak@v11.1.0/mod.ts';
 
-// MODELS
-import { users, messages } from "./models/index.ts";
-
 // ROUTES
-import {session, users as usersRoute, message} from "./routes/index.ts";
+import router from "./routes.ts";
 
-const port = 8000;
+// MIDDLEWARES
+import {errorHandler, notFoundMiddleware} from './middlewares/index.ts'
+
+// CONFIG
+import { PORT } from "./config.ts";
+
+const port = PORT as unknown as number ?? 8000;
 const app = new Application();
 
-app.use(async (ctx, next) => {
-  ctx.state = { me: users.get('1'), users, messages };
+app.use(errorHandler);
 
-  await next();
-});
+app.use(router.allowedMethods())
+app.use(router.routes())
 
-app.use(session.allowedMethods());
-app.use(session.routes());
-
-app.use(usersRoute.allowedMethods());
-app.use(usersRoute.routes());
-
-app.use(message.allowedMethods());
-app.use(message.routes());
+app.use(notFoundMiddleware);
 
 app.addEventListener('listen', () => {
   console.log(`Listening on localhost:${port}`);

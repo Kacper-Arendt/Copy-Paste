@@ -1,3 +1,9 @@
-import { config } from "https://deno.land/x/dotenv/mod.ts";
+import { config } from "./deps.ts";
 
-export const DATABASE_URL = config().DATABASE_URL
+await config({
+  export: true,
+  allowEmptyValues: true,
+});
+
+export const DATABASE_URL = Deno.env.get("DATABASE_URL");
+export const PORT = Deno.env.get("PORT");

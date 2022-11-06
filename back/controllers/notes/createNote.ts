@@ -8,16 +8,16 @@ export const createNote = async ({response, request}: Context) => {
     return;
   }
 
-  const { title } = await request.body().value;
+  const { title, body } = await request.body().value;
   
 
   if (!title) {
     response.status = 422;
-    response.body = { msg: "Incorrect data. Title is required" };
+    response.body = { msg: "Incorrect data. Title and body are required" };
     return;
   }
 
-  const noteId = await createNoteService({ title })
+  const noteId = await createNoteService({ title, body })
   
   response.body = { msg: "Note created", noteId };
 }

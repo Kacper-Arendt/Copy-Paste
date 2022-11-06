@@ -5,4 +5,3 @@ const pool = new postgres.Pool(DATABASE_URL, 4, true);
 const client = await pool.connect();
 
 export default client;
-

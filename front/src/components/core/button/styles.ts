@@ -1,13 +1,16 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 // MODELS
-import { buttonSize, ButtonStylesInterface } from 'src/components/core/button/types';
+import {
+  buttonSize,
+  ButtonStylesInterface,
+} from "src/components/core/button/types";
 
 const TextButton = css<ButtonStylesInterface>`
 	${({ theme, color }) =>
-		color &&
-		theme[color] &&
-		css`
+  color &&
+  theme[color] &&
+  css`
 			color: ${theme[color]};
 
 			&:hover {
@@ -23,35 +26,41 @@ const TextButton = css<ButtonStylesInterface>`
 
 const OutlinedButton = css<ButtonStylesInterface>`
 	${({ theme, color }) =>
-		color &&
-		theme[color] &&
-		css`
+  color &&
+  theme[color] &&
+  css`
 			border: 1px solid ${theme[color]};
 			color: ${theme[color]};
 
 			&:hover {
 				border-color: ${theme.darken({ amount: 0.05, color: theme[color] })};
-				background-color: ${theme.lighten({ amount: 0.4, color: theme[color] })};
+				background-color: ${
+    theme.lighten({ amount: 0.4, color: theme[color] })
+  };
 				color: ${theme.darken({ amount: 0.15, color: theme[color] })};
 			}
 
 			&:active {
 				border-color: ${theme.darken({ amount: 0.1, color: theme[color] })};
-				background-color: ${theme.lighten({ amount: 0.35, color: theme[color] })};
+				background-color: ${
+    theme.lighten({ amount: 0.35, color: theme[color] })
+  };
 			}
 		`}
 `;
 
 const ContainedButton = css<ButtonStylesInterface>`
 	${({ theme, color }) =>
-		color &&
-		theme[color] &&
-		css`
+  color &&
+  theme[color] &&
+  css`
 			background-color: ${theme[color]};
 			color: ${theme.white};
 
 			&:hover {
-				background-color: ${theme.darken({ amount: 0.05, color: theme[color] })};
+				background-color: ${
+    theme.darken({ amount: 0.05, color: theme[color] })
+  };
 				border-color: ${theme.darken({ amount: 0.05, color: theme[color] })};
 			}
 
@@ -74,35 +83,35 @@ export const StyledButton = styled.button<ButtonStylesInterface>`
 	letter-spacing: 1.05px;
 
 	${({ width }) =>
-		width &&
-		css`
+  width &&
+  css`
 			width: ${width};
 		`};
 
 	${({ size }) =>
-		size &&
-		buttonSize[size] &&
-		css`
+  size &&
+  buttonSize[size] &&
+  css`
 			padding: ${buttonSize[size]};
 		`};
 
 	${({ variant }) => {
-		switch (variant) {
-			case 'text':
-				return css`
+  switch (variant) {
+    case "text":
+      return css`
 					${TextButton}
 				`;
-			case 'outlined':
-				return css`
+    case "outlined":
+      return css`
 					${OutlinedButton};
 				`;
-			case 'contained':
-			default:
-				return css`
+    case "contained":
+    default:
+      return css`
 					${ContainedButton};
 				`;
-		}
-	}}
+  }
+}}
 
 	:disabled {
 		cursor: not-allowed;

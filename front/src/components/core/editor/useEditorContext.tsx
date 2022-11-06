@@ -1,53 +1,63 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 // HOOKS
-import { useGetComponent } from 'src/components/core/editor/useGetComponent';
+import { useGetComponent } from "src/components/core/editor/useGetComponent";
 
 // MODELS
-import { EditorPropsInterface } from 'src/components/core/editor/types';
+import { EditorPropsInterface } from "src/components/core/editor/types";
 
 interface ComponentInterface {
-	name: string;
-	type: 'file';
-	size: number;
-	url: string;
-	content: string;
+  name: string;
+  type: "file";
+  size: number;
+  url: string;
+  content: string;
 }
 
-export const useEditorContext = ({ componentName, componentTitle }: EditorPropsInterface) => {
-	const [componentDir, setComponentDir] = useState<ComponentInterface[] | null>(null);
-	const [activeFile, setActiveFile] = useState<ComponentInterface>();
-	const { getComponentFiles, fetchComponentFile } = useGetComponent();
+export const useEditorContext = (
+  { componentName, componentTitle }: EditorPropsInterface,
+) => {
+  const [componentDir, setComponentDir] = useState<ComponentInterface[] | null>(
+    null,
+  );
+  const [activeFile, setActiveFile] = useState<ComponentInterface>();
+  const { getComponentFiles, fetchComponentFile } = useGetComponent();
 
-	useEffect(() => {
-		const onSuccess = (data: ComponentInterface[]) => {
-			setComponentDir(data);
-		};
+  useEffect(() => {
+    const onSuccess = (data: ComponentInterface[]) => {
+      setComponentDir(data);
+    };
 
-		getComponentFiles({ componentName, onSuccess });
-	}, []);
+    getComponentFiles({ componentName, onSuccess });
+  }, []);
 
-	const getCurrentFile = (componentUrl: string) => {
-		const onSuccess = (data: ComponentInterface) => {
-			const updatedDate = { ...data, content: atob(data.content) };
+  const getCurrentFile = (componentUrl: string) => {
+    const onSuccess = (data: ComponentInterface) => {
+      const updatedDate = { ...data, content: atob(data.content) };
 
-			setActiveFile(updatedDate);
-		};
+      setActiveFile(updatedDate);
+    };
 
-		fetchComponentFile({ componentUrl, onSuccess });
-	};
+    fetchComponentFile({ componentUrl, onSuccess });
+  };
 
-	return {
-		componentDir,
-		componentName,
-		componentTitle,
-		getCurrentFile,
-		activeFile,
-	};
+  return {
+    componentDir,
+    componentName,
+    componentTitle,
+    getCurrentFile,
+    activeFile,
+  };
 };
 
-export const ContextData = createContext({} as ReturnType<typeof useEditorContext>);
+export const ContextData = createContext(
+  {} as ReturnType<typeof useEditorContext>,
+);
 
-export const ContextProvider = ({ children, value }: { children: ReactNode; value: EditorPropsInterface }) => (
-	<ContextData.Provider value={useEditorContext(value)}>{children}</ContextData.Provider>
+export const ContextProvider = (
+  { children, value }: { children: ReactNode; value: EditorPropsInterface },
+) => (
+  <ContextData.Provider value={useEditorContext(value)}>
+    {children}
+  </ContextData.Provider>
 );

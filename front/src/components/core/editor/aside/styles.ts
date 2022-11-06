@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledAside = styled.div`
 	grid-area: aside;
@@ -20,5 +20,6 @@ export const StyledFiles = styled.div`
 export const StyledHeader = styled.p`
 	font-size: 1rem;
 	padding: 1rem;
-	border-bottom: 1px solid ${({ theme }) => theme.transparentize({ amount: 0.8, color: theme.white })};
+	border-bottom: 1px solid ${({ theme }) =>
+  theme.transparentize({ amount: 0.8, color: theme.white })};
 `;

@@ -1,7 +1,7 @@
 import { Context } from "https://deno.land/x/oak@v11.1.0/context.ts";
 import { createNoteService } from "../../services/notes.ts";
 
-export const createNote = async ({response, request}: Context) => {
+export const createNote = async ({ response, request }: Context) => {
   if (!request.hasBody) {
     response.status = 400;
     response.body = { msg: "Invalid note data" };
@@ -9,7 +9,6 @@ export const createNote = async ({response, request}: Context) => {
   }
 
   const { title, body } = await request.body().value;
-  
 
   if (!title) {
     response.status = 422;
@@ -17,7 +16,7 @@ export const createNote = async ({response, request}: Context) => {
     return;
   }
 
-  const noteId = await createNoteService({ title, body })
-  
+  const noteId = await createNoteService({ title, body });
+
   response.body = { msg: "Note created", noteId };
-}
+};

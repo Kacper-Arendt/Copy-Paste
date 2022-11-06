@@ -1,19 +1,19 @@
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from "styled-components";
 
 // CONFIG
-import GlobalStyles from 'src/utils/theme/globalStyles';
-import theme from 'src/utils/theme/themeDefault';
+import GlobalStyles from "src/utils/theme/globalStyles";
+import theme from "src/utils/theme/themeDefault";
 
 // PACKAGES
-import { Map } from 'src/components/core/map';
+import { Map } from "src/components/core/map";
 
 export const App = () => (
-	<ThemeProvider theme={theme}>
-		<GlobalStyles />
-		<div>
-			<div style={{ height: '50vh', width: '50vh' }}>
-				<Map />
-			</div>
-		</div>
-	</ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    <div>
+      <div style={{ height: "50vh", width: "50vh" }}>
+        <Map />
+      </div>
+    </div>
+  </ThemeProvider>
 );

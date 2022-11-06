@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledEditor = styled.div`
 	display: grid;
@@ -12,5 +12,6 @@ export const StyledEditor = styled.div`
 	height: 42.4rem;
 	border-radius: ${({ theme }) => theme.radius[2]};
 
-	color: ${({ theme }) => theme.transparentize({ amount: 0.2, color: theme.white })};
+	color: ${({ theme }) =>
+  theme.transparentize({ amount: 0.2, color: theme.white })};
 `;

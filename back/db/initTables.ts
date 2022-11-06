@@ -9,10 +9,9 @@ export const initTables = async () => {
       body TEXT
     )
   `;
-  }catch (e) {
+  } catch (e) {
     console.log(e);
-  }
-  finally {
+  } finally {
     client.release();
   }
-}
+};

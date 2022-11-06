@@ -1,2 +1,2 @@
-export * from './errorHandler.ts'
-export * from './notFoundMiddleware.ts'
+export * from "./errorHandler.ts";
+export * from "./notFoundMiddleware.ts";

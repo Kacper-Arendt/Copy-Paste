@@ -5,8 +5,15 @@ import {
   getNoteById,
   getNotes,
 } from "./controllers/notes/index.ts";
+import { getUser, register } from "./controllers/auth/index.ts";
 
 const router = new Router();
+
+// AUTH
+router
+  // .post('/login', () => {})
+  .post("/register", register)
+  .post("/user/:id", getUser);
 
 // NOTES
 router

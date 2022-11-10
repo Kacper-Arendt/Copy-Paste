@@ -13,7 +13,7 @@ export const initTables = async () => {
     await client.queryObject`
     CREATE TABLE IF NOT EXISTS auth (
       id UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-      passwordHash TEXT NOT NULL,
+      password_hash TEXT NOT NULL,
       email VARCHAR (60) UNIQUE NOT NULL
     )
   `;

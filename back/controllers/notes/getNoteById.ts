@@ -1,4 +1,4 @@
-import { Context } from "https://deno.land/x/oak@v11.1.0/context.ts";
+import { Context } from "../../deps.ts";
 import { getNoteByIdService } from "../../services/notes.ts";
 
 export const getNoteById = async ({ response, params }: Context) => {

@@ -1,4 +1,4 @@
-import { Context } from "https://deno.land/x/oak@v11.1.0/context.ts";
+import { Context } from "../../deps.ts";
 
 // SERVICE
 import { deleteNoteByIdService } from "../../services/notes.ts";

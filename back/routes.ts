@@ -14,7 +14,8 @@ const router = new Router();
 router
   .post("/auth/login", login)
   .post("/auth/register", register)
-  .get("/users/:id", getUser);
+  .get("/auth/user",protectedRoute, getUser);
+
 
 // NOTES
 router

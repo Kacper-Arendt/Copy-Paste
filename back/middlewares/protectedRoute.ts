@@ -2,7 +2,7 @@ import { validateToken } from "../utils/token.ts";
 import { Context, Middleware } from "../deps.ts";
 
 export const protectedRoute: Middleware = async (
-  { request, response }: Context,
+  { request, response ,state}: Context,
   next: () => Promise<unknown>,
 ) => {
   try {
@@ -27,11 +27,13 @@ export const protectedRoute: Middleware = async (
       };
       return;
     }
-
+    
+    state.loggedUser= isValid?.id
+    
     await next();
   } catch (error) {
     response.status = 500;
-    response.body = { msg: 'Error occurred while decoding token' };
+    response.body = { msg: "Error occurred while decoding token", error };
     return;
   }
 };

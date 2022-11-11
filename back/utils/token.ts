@@ -6,7 +6,6 @@ const key = await crypto.subtle.generateKey(
   ["sign", "verify"],
 );
 
-
 export const createToken = async (
   { email, id }: { email: string; id: string },
 ) => {
@@ -25,5 +24,5 @@ export const createToken = async (
 };
 
 export const validateToken = async (token: string) => {
-    return await verify(token, key);
+  return await verify(token, key);
 };

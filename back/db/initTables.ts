@@ -2,13 +2,7 @@ import client from "./client.ts";
 
 export const initTables = async () => {
   try {
-    await client.queryObject`
-    CREATE TABLE IF NOT EXISTS notes (
-      id UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-      title TEXT NOT NULL,
-      body TEXT
-    )
-  `;
+   
 
     await client.queryObject`
     CREATE TABLE IF NOT EXISTS auth (
@@ -26,6 +20,15 @@ export const initTables = async () => {
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
     `;
+
+    await client.queryObject`
+    CREATE TABLE IF NOT EXISTS notes (
+      id UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+      title TEXT NOT NULL,
+      body TEXT,
+      author UUID NOT NULL REFERENCES profile(id) 
+    )
+  `;
   } catch (e) {
     console.log(e);
   } finally {

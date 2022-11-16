@@ -7,12 +7,15 @@ import {
 } from "./controllers/notes/index.ts";
 import { getUser, login, register } from "./controllers/auth/index.ts";
 import { protectedRoute } from "./middlewares/protectedRoute.ts";
+import { getProfile } from "./controllers/profile/index.ts";
+import { getUserNotes } from "./controllers/notes/getUserNotes.ts";
 
 const router = new Router();
 
 // PROFILE
 router
-  .get("/profile", () => {})
+  .get("/user/profile", protectedRoute, getProfile)
+  .get("/user/notes", protectedRoute, getUserNotes)
   .post("/profile", () => {});
 
 // AUTH

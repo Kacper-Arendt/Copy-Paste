@@ -1,7 +1,7 @@
 import { Context } from "../../deps.ts";
 import { createNoteService } from "../../services/notes.ts";
 
-export const createNote = async ({ response, request }: Context) => {
+export const createNote = async ({ response, request,state }: Context) => {
   if (!request.hasBody) {
     response.status = 400;
     response.body = { msg: "Invalid note data" };
@@ -15,8 +15,9 @@ export const createNote = async ({ response, request }: Context) => {
     response.body = { msg: "Incorrect data. Title and body are required" };
     return;
   }
+  const author = state?.loggedUser;
 
-  const note = await createNoteService({ title, body });
+  const note = await createNoteService({ title, body, author });
 
   if (note) {
     response.body = { note };

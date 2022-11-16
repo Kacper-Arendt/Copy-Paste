@@ -12,7 +12,7 @@ export const register = async ({ response, request }: Context) => {
 
   const findUser = await getUserByEmailService(email);
 
-  if (findUser) return response.body = { msg: "Email exists" };
+  if (findUser?.id) return response.body = { msg: "Email exists" };
 
   const createUser = await registerService({ email, password });
 

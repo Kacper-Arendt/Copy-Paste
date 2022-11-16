@@ -2,7 +2,7 @@ import { validateToken } from "../utils/token.ts";
 import { Context, Middleware } from "../deps.ts";
 
 export const protectedRoute: Middleware = async (
-  { request, response ,state}: Context,
+  { request, response, state }: Context,
   next: () => Promise<unknown>,
 ) => {
   try {
@@ -27,9 +27,9 @@ export const protectedRoute: Middleware = async (
       };
       return;
     }
-    
-    state.loggedUser= isValid?.id
-    
+
+    state.loggedUser = isValid?.id;
+
     await next();
   } catch (error) {
     response.status = 500;

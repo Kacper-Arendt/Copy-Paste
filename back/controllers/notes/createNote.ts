@@ -16,7 +16,11 @@ export const createNote = async ({ response, request }: Context) => {
     return;
   }
 
-  const noteId = await createNoteService({ title, body });
+  const note = await createNoteService({ title, body });
 
-  response.body = { msg: "Note created", noteId };
+  if (note) {
+    response.body = { note };
+    response.status = 200;
+    return;
+  }
 };

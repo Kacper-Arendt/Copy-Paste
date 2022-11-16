@@ -10,12 +10,16 @@ import { protectedRoute } from "./middlewares/protectedRoute.ts";
 
 const router = new Router();
 
+// PROFILE
+router
+  .get("/profile", () => {})
+  .post("/profile", () => {});
+
 // AUTH
 router
   .post("/auth/login", login)
   .post("/auth/register", register)
-  .get("/auth/user",protectedRoute, getUser);
-
+  .get("/auth/user", protectedRoute, getUser);
 
 // NOTES
 router

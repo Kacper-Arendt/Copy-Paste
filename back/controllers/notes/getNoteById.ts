@@ -17,5 +17,5 @@ export const getNoteById = async ({ response, params }: Context) => {
     return;
   }
 
-  return response.body = note;
+  return response.body = { note };
 };

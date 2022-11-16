@@ -4,8 +4,16 @@ import { runQuery } from "./utils.ts";
 import { NotesInterface } from "../models/notes.ts";
 import client from "./client.ts";
 
-export const selectAllNotes = async () =>
-  await runQuery<NotesInterface[]>(`SELECT * FROM notes`);
+export const notesDto = (notes: NotesInterface): NotesInterface => ({
+  id: notes?.id,
+  title: notes?.title,
+  body: notes?.title,
+});
+
+export const selectAllNotes = async () => {
+  const notes = await runQuery<NotesInterface>(`SELECT * FROM notes`);
+  return notes?.rows.map((el) => notesDto(el));
+};
 
 export const selectNoteById = async (id: string) => {
   const note = await client.queryObject<NotesInterface>` 
@@ -14,18 +22,19 @@ export const selectNoteById = async (id: string) => {
 
   client.release();
 
-  return note.rows[0];
+  return notesDto(note.rows[0]);
 };
 
 export const createNote = async (
   { title, body }: Omit<NotesInterface, "id">,
 ) => {
-  const createdNote = await client.queryObject`
-          INSERT INTO notes (title, body) VALUES (${title}, ${body}) RETURNING id
+  const createdNote = await client.queryObject<NotesInterface>`
+          INSERT INTO notes (title, body) VALUES (${title}, ${body}) RETURNING *
         `;
 
   client.release();
-  return createdNote?.rows[0];
+
+  return notesDto(createdNote?.rows[0]);
 };
 
 export const deleteNote = async (id: string) => {
